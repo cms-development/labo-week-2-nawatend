@@ -39,19 +39,19 @@
                             <h3><i class="pr-3 fa fa-comment"></i>Reacties</h3>
                             <hr>
 
-                            <form action="{{ path('savecamp') }}" method="post" style="width:70%;" enctype="multipart/form-data">
+                            <form action="{{ path('saveReview',{camp_id: camp.id}) }}" method="post" style="width:70%;" >
 
                             <div class="row mb-5">
                                 <div class="col-sm-12">
                                     <img class="comment-img rounded-circle" src="{{ asset('images/astronaut-profile.png') }}">
                                     <div class="comment-container d-inline-block pl-3 align-top">
                                         <div class="form-group">
-                                            <input type="text" name="campAuthor" class="form-control" placeholder="Your name">
+                                            <input type="text" name="reviewerName" class="form-control" placeholder="Your name">
                                         </div>
                                         <div class="form-group">
-                                            <textarea class="form-control comment-form" id="articleText" rows="2" placeholder="Your comment"></textarea>
+                                            <textarea class="form-control comment-form" id="articleText" rows="2" name="reviewMessage" placeholder="Your comment"></textarea>
                                         </div>
-                                        <button type="submit" class="btn btn-info">Plaats reactie</button>
+                                        <button type="submit" class="btn btn-info">Add Review</button>
                                     </div>
                                 </div>
                             </div>

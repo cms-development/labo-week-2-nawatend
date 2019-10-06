@@ -13,10 +13,10 @@
             <div class="col-sm-12 col-md-8">
 
                 <!-- H1 Camp -->
-                <a class="main-article-link" href="#">
+                <a class="main-article-link" href="{{ path('campdetail',{campTitle:inPreview[0].title}) }}">
                     <div class="main-article mb-5 pb-3">
-                        <img src="{{ asset('images/boogschieten.jpg') }}" alt="boogschieten">
-                        <h1 class="text-center mt-2">Boogschieten <br>Team NMD geeft het voorbeeld </h1>
+                        <img src="{{ asset('images/') ~ inPreview[0].image }}" alt="boogschieten">
+                        <h1 class="text-center mt-2">{{ inPreview[0].title}} <br>{{inPreview[0].quote}}</h1>
                     </div>
                 </a>
 

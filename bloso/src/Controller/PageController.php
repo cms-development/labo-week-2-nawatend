@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\Camps;
 use App\Entity\Reviews;
 
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,14 +25,15 @@ class PageController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(Camps::class);
 
         // look for multiple Product objects matching the name, ordered by price
-        $camps = $repository->findAll();
 
+    $camps = $repository->findBy(array(), array('created_time' => 'desc'), 4);
+    $inPreview = $repository->findBy(["in_preview"=> 1]);
 
-        return $this->render("page/index.html.twig",["camps" =>$camps]);
+        return $this->render("page/index.html.twig",["camps" =>$camps, 'inPreview' => $inPreview]);
     }
 
     /**
-     * @Route("/camp/save", name="saveCamp")
+     * @Route("/camp/save", name="saveCamp", methods={"POST"})
      *
      */
     public function addNewCamp(){
@@ -80,6 +83,26 @@ class PageController extends AbstractController
         return $this->render('page/create_camp.html.twig');
     }
 
+    /**
+     * @Route("/camp/review/new/{camp_id}", name="saveReview", methods={"POST"})
+     * @param $camp_id
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function addReview($camp_id, Request $request){
+        $manager = $this->getDoctrine()->getManager();
+
+        $review = new Reviews();
+        $review->getCampId($camp_id);
+        $review->setReviewerName($_POST["reviewerName"]);
+        $review->setMessage($_POST["reviewMessage"]);
+
+        $manager->persist($review);
+        $manager->flush();
+
+        return $this->redirect($request->getUri());
+
+    }
 
 
 
