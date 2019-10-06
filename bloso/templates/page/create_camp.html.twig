@@ -5,10 +5,25 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <form action="{{ path('savecamp') }}" method="post" style="width:100%;" enctype="multipart/form-data">
+            <form action="{{ path('savecamp') }}" method="post" style="width:70%;" enctype="multipart/form-data">
 
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Camp Title</label>
+                    <input type="text" name="campTitle" class="form-control" placeholder="new Camp title">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Your name</label>
+                    <input type="text" name="campAuthor" class="form-control" placeholder="Your name">
+                </div>
 
-
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Your name</label>
+                    <input type="text" name="campQuote" class="form-control" placeholder="Camp Quote">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Camp Description</label>
+                    <textarea name="campDescription" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                </div>
 
                 <button class="btn btn-primary" type="submit">Save Camp</button>
             </form>

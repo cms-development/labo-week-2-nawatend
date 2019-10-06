@@ -9,7 +9,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Validator\Constraints\DateTime;
 
 class PageController extends AbstractController
 {
@@ -31,27 +30,31 @@ class PageController extends AbstractController
     }
 
     /**
-     * @Route("/camp/save", name="New Camp")
-     * @return Response
+     * @Route("/camp/save", name="saveCamp")
+     *
      */
-    public function addNewCamp()
-    {
-$manager = $this->getDoctrine()->getManager();
+    public function addNewCamp(){
 
-$camp =new Camps();
 
-$camp->setTitle("New Camp Title");
-$camp->setAuthor("Nawang Tendar");
-$camp->setLikes(0);
-$camp->setInPreview(false);
-$camp->setParagraphs("Habbhaha hahhhahahaha asdsad sad asd");
-$camp->setQuote("This is beautiful quote!!!");
-$camp->setImage("https://images.pexels.com/photos/1834399/pexels-photo-1834399.jpeg");
-$manager->persist($camp);
-$manager->flush();
+        $manager = $this->getDoctrine()->getManager();
 
-dump($manager);
-        return new Response('pauze, new camp added');
+        $camp = new Camps();
+
+        $camp->setTitle($_POST['campTitle']);
+        $camp->setAuthor($_POST['campAuthor']);
+        $camp->setQuote($_POST['campQuote']);
+        $camp->setImage("snelwandelen.png");
+        $camp->setParagraphs($_POST['campDescription']);
+        $camp->setInPreview(false);
+        $camp->setLikes(0);
+        //createdTime in constructor
+        //$camp->setCreatedTime(DateTime::createFromFormat("Y-m-d H:i:s"));
+        $manager->persist($camp);
+        $manager->flush();
+
+        return $this->redirectToRoute('homepage');
+
+
     }
 
     /**
@@ -77,30 +80,10 @@ dump($manager);
         return $this->render('page/create_camp.html.twig');
     }
 
-    /**
-     * @Route("/camp/save",name="savecamp")
-     */
-    public function saveCamp(Request $request){
-
-        $manager = $this->getDoctrine()->getManager();
-
-        $camp = new Camps();
-
-        $camp->setTitle("A New Camp");
-        $camp->setAuthor("Jezos");
-        $camp->setQuote("Well done, my son");
-        $camp->setImage("astronaut-profile.png");
-        $camp->setParagraphs("This is para something la la la");
-        $camp->setInPreview(false);
-        $camp->setLikes(0);
-//        $camp->setCreatedTime(DateTime::createFromFormat("Y-m-d H:i:s"));
-        $manager->persist($camp);
-        $manager->flush();
-
-        return $this->render("/");
 
 
-    }
+
+
 
 
 }
