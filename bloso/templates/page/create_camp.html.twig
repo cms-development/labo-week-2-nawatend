@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Camp{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <form action="{{ path('savecamp') }}" method="post" style="width:100%;" enctype="multipart/form-data">
+
+
+
+
+                <button class="btn btn-primary" type="submit">Save Camp</button>
+            </form>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}
