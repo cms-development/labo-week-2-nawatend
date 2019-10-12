@@ -2,16 +2,17 @@
     <a style="margin-left: 75px;" class="navbar-brand space-brand" href="/">
         <img class="logo" src="{{ asset('images/blozo.png') }}" alt="Blozo">
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a style="color: #fff;" class="nav-link" href="#">Sportkampen</a>
+                <a style="color: #fff;" class="nav-link" href="{{ path('home') }}">Sportkampen</a>
             </li>
             <li class="nav-item">
-                <a style="color: #fff;" class="nav-link" href="#">Contacten</a>
+                <a style="color: #fff;" class="nav-link" href="{{ path('contacts') }}">Contacten</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -20,7 +21,8 @@
         </form>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown" style="margin-right: 75px;">
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="nav-profile-img rounded-circle" src="{{ asset('images/avatar.jpg') }}">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bloso Home!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <p>Here you can create new Camp</p>
+        <br>
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+        {{ form_row(form.name) }}
+        {{ form_row(form.author) }}
+        {{ form_row(form.quote) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.date) }}
+        {{ form_row(form.save) }}
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

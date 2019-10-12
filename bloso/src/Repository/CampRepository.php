@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Camps;
+use App\Entity\Camp;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method Camps|null find($id, $lockMode = null, $lockVersion = null)
- * @method Camps|null findOneBy(array $criteria, array $orderBy = null)
- * @method Camps[]    findAll()
- * @method Camps[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Camp|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Camp|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Camp[]    findAll()
+ * @method Camp[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CampsRepository extends ServiceEntityRepository
+class CampRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Camps::class);
+        parent::__construct($registry, Camp::class);
     }
 
     // /**
-    //  * @return Camps[] Returns an array of Camps objects
+    //  * @return Camp[] Returns an array of Camp objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class CampsRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Camps
+    public function findOneBySomeField($value): ?Camp
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.exampleField = :val')

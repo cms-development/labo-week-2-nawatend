@@ -1,56 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bloso Home!{% endblock %}
+{% block title %}{{ 'Bloso home'|title }}{% endblock %}
 
 {% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
 
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    <div class="container">
-        <div class="row">
-
-            <!-- Camp List -->
-
-            <div class="col-sm-12 col-md-8">
-
-                <!-- H1 Camp -->
-                <a class="main-article-link" href="{{ path('campdetail',{campTitle:inPreview[0].title}) }}">
-                    <div class="main-article mb-5 pb-3">
-                        <img src="{{ asset('images/') ~ inPreview[0].image }}" alt="boogschieten">
-                        <h1 class="text-center mt-2">{{ inPreview[0].title}} <br>{{inPreview[0].quote}}</h1>
-                    </div>
-                </a>
-
-                <!-- Supporting Camps -->
-
-
-                {% for camp in camps %}
-                <div class="article-container my-1">
-                    <a href="{{ path('campdetail',{campTitle:camp.title}) }}">
-                        <img class="article-img" src="{{ asset("images/") ~ camp.image }}">
-                        <div class="article-title d-inline-block pl-3 align-middle">
-                            <span>{{ camp.title}}<br> {{ camp.quote}}</span>
-                            <br>
-                            <span class="align-left article-details"><img class="article-author-img rounded-circle" src="images/alien-profile.png"> {{ camp.author}}</span>
-                            <span class="pl-5 article-details float-right"> {{ camp.createdTime|date("Y-m-d H:i:s") }}</span>
-                        </div>
-                    </a>
-                </div>
-                {% endfor %}
-
-            </div>
-
-            <!-- Right bar ad space -->
-            <div class="col-sm-12 col-md-4 text-center">
-                <a href="{{ path('newcamp') }}">
-                <button class="btn btn-info my-2 my-sm-0" type="submit">Create new Camp</button>
-                </a>
-                <div class="quote-space pb-2 pt-2 px-5">
-                    <h3 class="text-center pb-3">Getuigenissen</h3>
-                    <p><i class="fa fa-comment"></i> "Toen ik voor het eerst een sacoche wierp,  gooide ik nog geen twee meter ver. Maar nu gaat het al veel beter." <br>— <a href="https://www.youtube.com/watch?v=3jfNfmghZUI" target="_blank">Joost Van Hyfte</a></p>
-                    <p class="pt-4"><i class="fa fa-comment"></i> "Eigenlijk was ik nooit traag bij het rennen, maar altijd al een snelwandelaar geweest" <br>— <a href="https://www.youtube.com/watch?v=1z8NpmCqvZE" target="_blank">Kraantje Pappie</a></p>
-                    <p class="pt-4"><i class="fa fa-comment"></i> "Tijdens het jongleren, moet ik minder krabben van mijn algerie"<br>— <a href="https://www.youtube.com/watch?v=hJapJjUix8A" target="_blank">Filip Mars</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'C:/Users/ntend/Desktop/AAA School 2019  2020/CMSDev/bloso/src/Controller/PageController.php'|file_link(0) }}">src/Controller/PageController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'C:/Users/ntend/Desktop/AAA School 2019  2020/CMSDev/bloso/templates/page/index.html.twig'|file_link(0) }}">templates/page/index.html.twig</a></code></li>
+    </ul>
+</div>
 {% endblock %}

@@ -5,12 +5,19 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model\Sortable\Sortable;
+use Knp\DoctrineBehaviors\Model\Timestampable\Timestampable;
+use Knp\DoctrineBehaviors\Model\Translatable\Translatable;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\CampsRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\CampRepository")
  */
-class Camps
+class Camp
 {
+    use Timestampable;
+    use Translatable;
+    use Sortable;
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -21,7 +28,8 @@ class Camps
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $title;
+    private $name;
+
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -29,29 +37,15 @@ class Camps
     private $author;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
-    private $created_time;
+    private $date;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $likes;
-
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $paragraphs;
-
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $image;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $quote;
+    private $image;
 
     /**
      * @ORM\Column(type="boolean")
@@ -59,14 +53,18 @@ class Camps
     private $in_preview;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Reviews", mappedBy="camp_id", orphanRemoval=true)
+     * @ORM\Column(type="integer")
+     */
+    private $likes;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Review", mappedBy="camp_id", orphanRemoval=true)
      */
     private $reviews;
 
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
-        $this->created_time = new \DateTime();
     }
 
     public function getId(): ?int
@@ -74,14 +72,14 @@ class Camps
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function getName(): ?string
     {
-        return $this->title;
+        return $this->name;
     }
 
-    public function setTitle(string $title): self
+    public function setName(string $name): self
     {
-        $this->title = $title;
+        $this->name = $name;
 
         return $this;
     }
@@ -98,41 +96,18 @@ class Camps
         return $this;
     }
 
-    public function getCreatedTime(): ?\DateTimeInterface
+    public function getDate(): ?\DateTimeInterface
     {
-        return $this->created_time;
+        return $this->date;
     }
 
-    public function setCreatedTime(\DateTimeInterface $created_time): self
+    public function setDate(\DateTimeInterface $date): self
     {
-        $this->created_time = $created_time;
+        $this->date = $date;
 
         return $this;
     }
 
-    public function getLikes(): ?int
-    {
-        return $this->likes;
-    }
-
-    public function setLikes(int $likes): self
-    {
-        $this->likes = $likes;
-
-        return $this;
-    }
-
-    public function getParagraphs(): ?string
-    {
-        return $this->paragraphs;
-    }
-
-    public function setParagraphs(string $paragraphs): self
-    {
-        $this->paragraphs = $paragraphs;
-
-        return $this;
-    }
 
     public function getImage(): ?string
     {
@@ -142,18 +117,6 @@ class Camps
     public function setImage(string $image): self
     {
         $this->image = $image;
-
-        return $this;
-    }
-
-    public function getQuote(): ?string
-    {
-        return $this->quote;
-    }
-
-    public function setQuote(string $quote): self
-    {
-        $this->quote = $quote;
 
         return $this;
     }
@@ -170,24 +133,37 @@ class Camps
         return $this;
     }
 
+    public function getLikes(): ?int
+    {
+        return $this->likes;
+    }
+
+    public function setLikes(int $likes): self
+    {
+        $this->likes = $likes;
+
+        return $this;
+    }
+
     /**
-     * @return Collection|Reviews[]
+     * @return Collection|Review[]
      */
     public function getReviews(): Collection
     {
         return $this->reviews;
     }
 
-    public function addReview(Reviews $review): self
+    public function addReview(Review $review): self
     {
         if (!$this->reviews->contains($review)) {
             $this->reviews[] = $review;
             $review->setCampId($this);
         }
+
         return $this;
     }
 
-    public function removeReview(Reviews $review): self
+    public function removeReview(Review $review): self
     {
         if ($this->reviews->contains($review)) {
             $this->reviews->removeElement($review);
