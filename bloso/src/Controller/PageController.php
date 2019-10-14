@@ -2,19 +2,35 @@
 
 namespace App\Controller;
 
+use App\Entity\Camp;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PageController extends AbstractController
 {
     /**
-     * @Route("/", name="home")
+     * @Route("/{_locale}", locale="en", requirements={"_locale": "en|nl"}, name="home")
+     *
      */
-    public function index()
+    public function index(Request $request)
     {
-        return $this->render('page/index.html.twig', [
-            'controller_name' => 'PageController',
-        ]);
+
+
+        $locale = $request->getLocale();
+        $request->setLocale('nl');
+        //dd($locale);
+        $repository = $this->getDoctrine()->getRepository(Camp::class);
+
+        // look for multiple Product objects matching the name, ordered by price
+
+        $camps = $repository->findBy(array(), array('id' => 'desc'), 4);
+        $inPreview = $repository->findBy(["in_preview" => 1]);
+
+        return $this->render("page/index.html.twig", ["camps" => $camps, 'inPreview' => $inPreview]);
+
     }
 
     /**
@@ -24,4 +40,22 @@ class PageController extends AbstractController
         return $this->render("page/contacts.html.twig");
 
     }
+
+//    /**
+//     * @Route ("/{locale}", name="changeLocale")
+//     * @param $locale
+//     * @param RequestEvent $event
+//     */
+//    public function changeLocale($locale, RequestEvent $event){
+//
+//        $request = $event->getRequest();
+//
+//        // some logic to determine the $locale
+//        $request->setLocale($locale);
+//    }
+
+
+
+
+
 }

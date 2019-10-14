@@ -2,13 +2,18 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model\Timestampable\Timestampable;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ReviewRepository")
  */
 class Review
 {
+    use Timestampable;
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -18,6 +23,7 @@ class Review
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Fill your name")
      */
     private $user_name;
 
@@ -29,13 +35,10 @@ class Review
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     private $message;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $created_time;
 
     public function getId(): ?int
     {
@@ -78,15 +81,5 @@ class Review
         return $this;
     }
 
-    public function getCreatedTime(): ?\DateTimeInterface
-    {
-        return $this->created_time;
-    }
 
-    public function setCreatedTime(\DateTimeInterface $created_time): self
-    {
-        $this->created_time = $created_time;
-
-        return $this;
-    }
 }
