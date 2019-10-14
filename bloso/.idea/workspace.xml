@@ -2,22 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9755fefb-b694-440a-8a3a-8eb357515e42" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/ajax.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/framework.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/framework.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/CampController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CampController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ReviewController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReviewController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Review.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Review.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/camp/detail.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/camp/detail.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/camp/new_camp.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/camp/new_camp.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/page/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/page/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/partials/footer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/footer.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/partials/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/header.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/translations/messages.en.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/translations/messages.en.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/translations/messages.nl.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/translations/messages.nl.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,7 +163,7 @@
       <workItem from="1570611797636" duration="2646000" />
       <workItem from="1570614799855" duration="12454000" />
       <workItem from="1570836164409" duration="2302000" />
-      <workItem from="1570887517619" duration="33005000" />
+      <workItem from="1570887517619" duration="40117000" />
     </task>
     <servers />
   </component>

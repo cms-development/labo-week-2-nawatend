@@ -19,8 +19,8 @@ class PageController extends AbstractController
     {
 
 
-        $locale = $request->getLocale();
-        $request->setLocale('nl');
+
+
         //dd($locale);
         $repository = $this->getDoctrine()->getRepository(Camp::class);
 
@@ -29,7 +29,7 @@ class PageController extends AbstractController
         $camps = $repository->findBy(array(), array('id' => 'desc'), 4);
         $inPreview = $repository->findBy(["in_preview" => 1]);
 
-        return $this->render("page/index.html.twig", ["camps" => $camps, 'inPreview' => $inPreview]);
+        return $this->render("page/index.html.twig", ["camps" => $camps, 'inPreview' => $inPreview, 'language'=> $request->getLocale() ]);
 
     }
 

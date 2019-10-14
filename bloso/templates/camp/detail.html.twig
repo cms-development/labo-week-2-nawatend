@@ -16,7 +16,7 @@
                     <span class="pl-2 article-details"> {{ camp.date|date("Y-m-d") }}</span>
                     <span class="pl-2 article-details">
                                     <span id="like-counter">{{ camp.likes }}</span>
-                                    <a href="/news/krabpaaljongleren/heart" id="like-heart-button"
+                                    <a href="#" id="like-heart-button"
                                        class="fa fa-heart-o like-article"></a>
                                 </span>
                 </div>
@@ -25,13 +25,14 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="article-text">
-                    <p>{{ camp.translations[locale].description }}</p>
+                    <p>{{ camp.translations[language].description }}</p>
                 </div>
+                <a class="nav-link btn btn-danger w-25"  href="{{ path('deleteCamp',{camp: camp.id}) }}">{{ "Delete"|trans }}</a>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <p class="share-icons mb-5"><span class="pr-1">{{"Delen"|trans}}:</span> <i
+                <p class="share-icons mb-5"><span class="pr-1">{{"Share"|trans}}:</span> <i
                             class="pr-1 fa fa-facebook-square"></i><i class="pr-1 fa fa-twitter-square"></i><i
                             class="pr-1 fa fa-reddit-square"></i><i class="pr-1 fa fa-share-alt-square"></i>
                 </p>
@@ -64,4 +65,37 @@
             {% endfor %}
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+
+
+    let btnHeart = document.getElementById("like-heart-button")
+    let heartCounter = document.getElementById('like-counter')
+
+    btnHeart.addEventListener("click", async function (e) {
+
+    e.preventDefault()
+    let response = await fetch("{{ path('likeCamp', {'_locale': language, 'campId': camp.id}) }}", {
+    method: 'POST',
+    body: JSON.stringify({'liked': true}),
+    })
+        let totalLikes = await response.json()
+        console.log(totalLikes.likes)
+
+
+            //change icon
+            btnHeart.classList.remove('fa-heart-o')
+            btnHeart.classList.add('fa-heart')
+
+
+        heartCounter.innerText = totalLikes.likes
+
+    })
+    </script>
+
+
 {% endblock %}
